@@ -1,55 +1,75 @@
 // survis.js
-var SurVis = {
-  
-  escapeHtml: function(str) {
-    return str.replace(/[&<>"']/g, function(m) {
-      return ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[m]);
+
+(function(global) {
+
+  function $(tag, props = {}, ...children) {
+    const el = document.createElement(tag);
+    Object.assign(el, props);
+    children.forEach(c => {
+      if (typeof c === 'string') c = document.createTextNode(c);
+      el.appendChild(c);
     });
-  },
-
-  start: function(options) {
-    var container = options.element;
-    var entries = (options.data.entries || []).slice();
-
-    
-    entries.sort(function(a, b) {
-      return b.year - a.year;
-    });
-
-    
-    container.innerHTML = "";
-
-    
-    entries.forEach(function(entry) {
-      
-      var node = document.createElement("div");
-      node.className = "node";
-
-      
-      var html = ""
-        + "<strong>" + SurVis.escapeHtml(entry.title) + "</strong><br>"
-        + "<em>" + SurVis.escapeHtml(entry.author) + "</em><br>"
-        + "Year: " + SurVis.escapeHtml(String(entry.year)) + "<br>"
-        + "Keywords: " + SurVis.escapeHtml(entry.keywords.join(", "));
-
-      node.innerHTML = html;
-      container.appendChild(node);
-    });
-
-    
-    if (entries.length === 0) {
-      var empty = document.createElement("div");
-      empty.className = "node";
-      empty.textContent = "No entries found.";
-      container.appendChild(empty);
-    }
+    return el;
   }
-};
+
+  
+  function start(config) {
+    const { data, element, sortField, sortDescending } = config;
+
+    let papers = Array.isArray(data.entries) ? data.entries.slice() : [];
+
+
+    if (sortField) {
+      papers.sort((a, b) => {
+        const da = a[sortField] || 0;
+        const db = b[sortField] || 0;
+        return sortDescending ? db - da : da - db;
+      });
+    }
+
+ 
+    const filterInput = $('input', {
+      placeholder: 'Filter by keyword…',
+      style: 'margin-bottom:10px;padding:4px;width:200px;'
+    });
+    element.innerHTML = ''; 
+    element.appendChild(filterInput);
+
+ 
+    const list = $('div');
+    element.appendChild(list);
+
+   
+    function render(items) {
+      list.innerHTML = '';
+      if (items.length === 0) {
+        list.appendChild($('div', {}, 'No papers found.'));
+        return;
+      }
+      items.forEach(p => {
+        const box = $('div', { className: 'node' });
+        box.appendChild($('h3', {}, p.title));
+        box.appendChild($('div', {}, $('i', {}, p.author || '' )));
+        box.appendChild($('div', {}, 'Year: ' + (p.year || '—')));
+        box.appendChild($('div', {}, 'Keywords: ' + (p.keywords || []).join(', ')));
+        list.appendChild(box);
+      });
+    }
+
+ 
+    render(papers);
+
+  
+    filterInput.addEventListener('input', () => {
+      const kw = filterInput.value.trim().toLowerCase();
+      if (!kw) return render(papers);
+      render(papers.filter(p => (p.keywords||[]).some(t => t.toLowerCase().includes(kw))));
+    });
+  }
+
+  global.SurVis = { start };
+
+})(window);
+
 
 

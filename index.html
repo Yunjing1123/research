@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SurVis - AI Deception Papers</title>
+    <script type="text/javascript" src="survis.js"></script>
+    <style>
+      #vis {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .node {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        background: #eef;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AI Deception and Misinformation Research</h1>
+    <div id="vis"></div>
+    <script type="text/javascript">
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          SurVis.start({
+            data: data,
+            element: document.getElementById('vis')
+          });
+        });
+    </script>
+  </body>
+</html>

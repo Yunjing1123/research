@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>SurVis - AI Deception Papers</title>
- 
-    <script type="text/javascript" src="survis.js"></script>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-      #vis {
-        margin: 20px;
-      }
-      .node {
-        padding: 10px;
-        margin: 5px;
-        border: 1px solid #ccc;
-        background: #eef;
-      }
-      .error {
-        color: red;
-        margin: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>AI Deception and Misinformation Research</h1>
-   
-    <div id="vis"></div>
-  
-    <div id="error" class="error" style="display: none;"></div>
+<head>
+  <meta charset="UTF-8">
 
-    <script type="text/javascript">
-      // 
-      fetch("data.json")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok: " + response.status);
-          }
-          return response.json();
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SurVis - AI Deception Papers</title>
+
+  <script src="survis.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 16px;
+    }
+    #vis {
+      margin-top: 8px;
+    }
+    .node {
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #ccc;
+      background: #eef;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Deception and Misinformation Research</h1>
+  <div id="vis">Loading…</div>
+  <script>
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch('data.json')
+        .then(resp => {
+          if (!resp.ok) throw new Error('Network error');
+          return resp.json();
         })
-        .then((data) => {
-          //
+        .then(json => {
           SurVis.start({
-            data: data,
-            element: document.getElementById("vis"),
+            data: json,
+            element: document.getElementById('vis'),
+       
+            sortField: 'year',
+            sortDescending: true
           });
         })
-        .catch((err) => {
-          // 
+        .catch(err => {
+          document.getElementById('vis').textContent = 'Failed to load data.json';
           console.error(err);
-          const errDiv = document.getElementById("error");
-          errDiv.style.display = "block";
-          errDiv.textContent = "Error loading visualization: " + err.message;
         });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
+
 

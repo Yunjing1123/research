@@ -1,13 +1,15 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>SurVis - AI Deception Papers</title>
+ 
     <script type="text/javascript" src="survis.js"></script>
     <style>
-      #vis {
+      body {
         font-family: Arial, sans-serif;
+      }
+      #vis {
         margin: 20px;
       }
       .node {
@@ -16,20 +18,43 @@
         border: 1px solid #ccc;
         background: #eef;
       }
+      .error {
+        color: red;
+        margin: 20px;
+      }
     </style>
   </head>
   <body>
     <h1>AI Deception and Misinformation Research</h1>
+   
     <div id="vis"></div>
+  
+    <div id="error" class="error" style="display: none;"></div>
+
     <script type="text/javascript">
-      fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
+      // 
+      fetch("data.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok: " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          //
           SurVis.start({
             data: data,
-            element: document.getElementById('vis')
+            element: document.getElementById("vis"),
           });
+        })
+        .catch((err) => {
+          // 
+          console.error(err);
+          const errDiv = document.getElementById("error");
+          errDiv.style.display = "block";
+          errDiv.textContent = "Error loading visualization: " + err.message;
         });
     </script>
   </body>
 </html>
+

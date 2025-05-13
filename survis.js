@@ -30,53 +30,48 @@
     const list = create('div');
     element.appendChild(list);
 
-    // 
-    function renderAbstracts(paperList) {
-      const target = document.getElementById('abstractResults');
-      const searchInput = document.getElementById('abstractSearch');
+    // 🧠 渲染摘要区域
+    const abstractContainer = document.getElementById('abstractResults');
+    const abstractSearch = document.getElementById('abstractSearch');
 
-      const renderList = (items) => {
-        target.innerHTML = '';
-        if (items.length === 0) {
-          target.innerHTML = '<em>No matching abstracts found.</em>';
-          return;
-        }
-        items.forEach(p => {
-          const authors = Array.isArray(p.authors) ? p.authors.join('; ') : (p.author || 'Unknown Author');
-          const div = document.createElement('div');
-          div.style.marginBottom = '1.5rem';
-          div.innerHTML = `
-            <h3>${p.title}</h3>
-            <p><strong>Authors:</strong> ${authors}</p>
-            <p><strong>Year:</strong> ${p.year}</p>
-            <p><strong>Abstract:</strong><br/> ${p.abstract || 'No abstract available.'}</p>
-          `;
-          target.appendChild(div);
-        });
-      };
-
-      renderList(paperList);
-
-      // 
-      searchInput.value = '';
-      searchInput.oninput = () => {
-        const kw = searchInput.value.toLowerCase().trim();
-        const filtered = paperList.filter(p =>
-          (p.title || '').toLowerCase().includes(kw) ||
-          (p.keywords || []).some(k => k.toLowerCase().includes(kw)) ||
-          (Array.isArray(p.authors) ? p.authors.join(' ') : '').toLowerCase().includes(kw)
-        );
-        renderList(filtered);
-      };
+    function renderAbstracts(filteredList) {
+      abstractContainer.innerHTML = '';
+      if (filteredList.length === 0) {
+        abstractContainer.innerHTML = '<em>No matching abstracts found.</em>';
+        return;
+      }
+      filteredList.forEach((p, idx) => {
+        const authors = Array.isArray(p.authors) ? p.authors.join('; ') : (p.author || 'Unknown Author');
+        const div = document.createElement('div');
+        div.id = `abstract-${idx}`;
+        div.style.marginBottom = '1.5rem';
+        div.style.paddingBottom = '1rem';
+        div.style.borderBottom = '1px solid #eee';
+        div.innerHTML = `
+          <h3>${p.title}</h3>
+          <p><strong>Authors:</strong> ${authors}</p>
+          <p><strong>Year:</strong> ${p.year}</p>
+          <p><strong>Abstract:</strong><br/> ${p.abstract || 'No abstract available.'}</p>
+        `;
+        abstractContainer.appendChild(div);
+      });
     }
 
-    // 
-    global.SurVisClickYear = function(year) {
-      const matched = papers.filter(p => String(p.year) === String(year));
-      renderAbstracts(matched);
-    };
+    // 默认渲染所有摘要
+    renderAbstracts(papers);
 
-    // 
+    // 🔍 搜索摘要区域
+    abstractSearch.addEventListener('input', () => {
+      const kw = abstractSearch.value.toLowerCase().trim();
+      const matched = papers.filter(p =>
+        (p.title || '').toLowerCase().includes(kw) ||
+        (Array.isArray(p.authors) ? p.authors.join(' ') : '').toLowerCase().includes(kw) ||
+        (p.keywords || []).some(k => k.toLowerCase().includes(kw))
+      );
+      renderAbstracts(matched);
+    });
+
+    // 🧩 渲染右侧卡片列表
     function render(items) {
       list.innerHTML = '';
       if (items.length === 0) {
@@ -84,7 +79,7 @@
         return;
       }
 
-      items.forEach(p => {
+      items.forEach((p, idx) => {
         const authors = Array.isArray(p.authors)
           ? p.authors.join('; ')
           : (p.author || 'Unknown Author');
@@ -101,16 +96,20 @@
           create('p', {}, 'Keywords: ' + (p.keywords || []).join(', '))
         );
 
-        // 
+        // 📍 点击卡片自动滚动到摘要位置
         card.addEventListener('click', () => {
-          renderAbstracts([p]);
+          const target = document.getElementById(`abstract-${idx}`);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.style.background = '#f0f8ff';
+            setTimeout(() => target.style.background = '', 1000);
+          }
         });
 
         list.appendChild(card);
       });
     }
 
- 
     function filterPapers() {
       const kw = keywordInput.value.toLowerCase().trim();
       const cat = categorySelect.value;
@@ -129,6 +128,7 @@
 
   global.SurVis = { start };
 })(window);
+
 
 
 

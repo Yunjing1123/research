@@ -1,9 +1,9 @@
-(function (global) {
+(function(global) {
   function create(tag, props = {}, ...children) {
     const el = document.createElement(tag);
     Object.assign(el, props);
     children.forEach(c => {
-      if (typeof c === "string") c = document.createTextNode(c);
+      if (typeof c === 'string') c = document.createTextNode(c);
       el.appendChild(c);
     });
     return el;
@@ -11,75 +11,62 @@
 
   function start(config) {
     const { data, element } = config;
-    const papers = data.entries || [];
+    const papers = Array.isArray(data.entries) ? data.entries.slice() : [];
 
-    const controls = create("div", { style: "margin-bottom: 20px;" });
-    const searchBox = create("input", {
-      placeholder: "Filter by keyword…",
-      style: "padding: 5px; margin-right: 10px;"
+    const filters = create('div', { style: 'margin-bottom: 20px;' });
+    const keywordInput = create('input', {
+      placeholder: 'Filter by keyword…', style: 'padding:5px; margin-right:10px;'
     });
+    const categorySelect = create('select', { style: 'padding:5px;' });
+    const allCats = Array.from(new Set(papers.map(p => p.category || 'Other')));
+    categorySelect.appendChild(create('option', { value: '' }, 'All categories'));
+    allCats.forEach(c => categorySelect.appendChild(create('option', { value: c }, c)));
 
-    controls.appendChild(searchBox);
-    element.innerHTML = "";
-    element.appendChild(controls);
+    filters.appendChild(keywordInput);
+    filters.appendChild(categorySelect);
+    element.innerHTML = '';
+    element.appendChild(filters);
 
-    // Histogram
-    const histo = create("div", { className: "histogram" });
-    element.appendChild(histo);
-
-    // List
-    const list = create("div");
+    const list = create('div');
     element.appendChild(list);
 
-    // Render histogram
-    function renderHistogram(items) {
-      const years = {};
+    function render(items) {
+      list.innerHTML = '';
+      if (items.length === 0) {
+        list.appendChild(create('div', {}, 'No matching papers'));
+        return;
+      }
       items.forEach(p => {
-        const y = p.year || "Unknown";
-        years[y] = (years[y] || 0) + 1;
-      });
-
-      const sorted = Object.entries(years).sort((a, b) => +a[0] - +b[0]);
-      histo.innerHTML = "<h3>Histogram of Publication Years</h3>";
-      sorted.forEach(([year, count]) => {
-        const bar = create("div", {
-          className: "bar",
-          style: `width: ${count * 30}px`
-        }, `${year} (${count})`);
-        histo.appendChild(bar);
-      });
-    }
-
-    // Render entries
-    function renderList(items) {
-      list.innerHTML = "";
-      items.forEach(p => {
-        const node = create("div", { className: "node" },
-          create("h3", {}, p.title),
-          create("div", {}, `Author: ${p.author}`),
-          create("div", {}, `Year: ${p.year}`),
-          create("div", {}, `Keywords: ${p.keywords?.join(", ")}`),
-          create("div", {}, create("a", { href: `https://doi.org/${p.doi}`, target: "_blank" }, "View DOI"))
+        const card = create('div', { className: 'node' },
+          create('h3', {}, p.title || 'Untitled'),
+          create('p', {}, p.author || 'Unknown Author'),
+          create('p', {}, 'Year: ' + (p.year || '—')),
+          create('p', {}, 'Category: ' + (p.category || '—')),
+          create('p', {}, 'Keywords: ' + (p.keywords || []).join(', '))
         );
-        list.appendChild(node);
+        list.appendChild(card);
       });
     }
 
-    function update() {
-      const term = searchBox.value.toLowerCase();
-      const filtered = term
-        ? papers.filter(p => p.keywords?.some(k => k.toLowerCase().includes(term)))
-        : papers;
-      renderHistogram(filtered);
-      renderList(filtered);
+    function filterPapers() {
+      const kw = keywordInput.value.toLowerCase().trim();
+      const cat = categorySelect.value;
+      const filtered = papers.filter(p => {
+        const keywordMatch = kw ? (p.keywords || []).some(k => k.toLowerCase().includes(kw)) : true;
+        const categoryMatch = cat ? p.category === cat : true;
+        return keywordMatch && categoryMatch;
+      });
+      render(filtered);
     }
 
-    searchBox.addEventListener("input", update);
-    update();
+    keywordInput.addEventListener('input', filterPapers);
+    categorySelect.addEventListener('change', filterPapers);
+    render(papers);
   }
 
   global.SurVis = { start };
 })(window);
+
 
 
 

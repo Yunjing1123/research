@@ -24,16 +24,18 @@
       ]
     },
     {
-      "type": "article",
-      "title": "Data science for fake news: surveys and perspectives",
-      "author": "P, D.; Chakraboty, T.; Long, C.; Kumar, S.",
-      "year": 2021,
-      "doi": "10.1007/978-3-030-62696-9",
-      "keywords": [
-        "fake news",
-        "survey",
-        "data science"
-      ]
+     "type": "article",
+     "title": "AI deception: A survey of examples, risks, and potential solutions",
+     "author": "Park, P.S.; Goldstein, S.; O’Gara, A.; Chen, M.; Hendrycks, D.",
+     "year": 2024,
+     "doi": "10.1016/j.patter.2024.100988",
+     "keywords": [
+       "AI deception",
+       "misinformation",
+       "survey",
+       "risk analysis",
+       "regulation"
+     ]
     },
     {
       "type": "article",

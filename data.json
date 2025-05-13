@@ -2,94 +2,187 @@
   "entries": [
     {
       "type": "article",
-      "title": "AI deception: A survey of examples, risks, and potential solutions",
-      "authors": ["Park, P.S.", "Goldstein, S.", "O’Gara, A.", "Chen, M.", "Hendrycks, D."],
-      "year": 2024,
-      "doi": "10.1016/j.patter.2024.100988",
-      "keywords": ["AI deception", "misinformation", "survey", "risk analysis", "regulation"],
-      "category": "Detection & Mapping"
-    },
-    {
-      "type": "article",
-      "title": "A multi-layer approach to disinformation detection in US and Italian news spreading on Twitter",
-      "authors": ["Pierri, F.", "Piccardi, C.", "Ceri, S."],
-      "year": 2020,
-      "doi": "10.1140/epjds/s13688-020-00253-8",
-      "keywords": ["Twitter", "disinformation", "detection"],
-      "category": "Detection & Mapping"
-    },
-    {
-      "type": "article",
-      "title": "Bio-Inspired Artificial Intelligence with Natural Language Processing Based on Deceptive Content Detection in Social Networking",
-      "authors": ["Albraikan, A.A.", "et al."],
-      "year": 2023,
-      "doi": "10.3390/biomimetics8060449",
-      "keywords": ["NLP", "bio-inspired AI", "deception"],
-      "category": "AI-Enabled Deceptive Content"
-    },
-    {
-      "type": "article",
       "title": "Traffic Analysis Through Spatial and Temporal Correlation: Threat and Countermeasure",
-      "authors": ["Ebrahimi, Y.", "Younis, M."],
+      "authors": [
+        "Yousef Ebrahimi",
+        "Mohamed Younis"
+      ],
       "year": 2021,
       "doi": "10.1109/ACCESS.2021.3070841",
-      "keywords": ["traffic analysis", "AI", "correlation"],
-      "category": "Detection & Mapping"
-    },
-    {
-      "type": "article",
-      "title": "Using artificial intelligence (AI) and deepfakes to deceive victims: the need to rethink current romance fraud prevention messaging",
-      "authors": ["Cross, C."],
-      "year": 2022,
-      "doi": "10.1057/s41300-021-00134-w",
-      "keywords": ["deepfake", "romance fraud", "AI"],
-      "category": "Human & Social Impact"
-    },
-    {
-      "type": "article",
-      "title": "The Psychology of Internet Fraud Victimisation: a Systematic Review",
-      "authors": ["Norris, G.", "Brookes, A.", "Dowell, D."],
-      "year": 2019,
-      "doi": "10.1007/s11896-019-09334-5",
-      "keywords": ["fraud", "psychology", "systematic review"],
-      "category": "Human & Social Impact"
-    },
-    {
-      "type": "article",
-      "title": "Online frauds: learning from victims why they fall for these scams",
-      "authors": ["Button, M.", "McNaughton Nicholls, C.", "Kerr, J.", "Owen, R."],
-      "year": 2014,
-      "doi": "10.1177/0004865814521224",
-      "keywords": ["fraud", "victim psychology", "online scams"],
-      "category": "Human & Social Impact"
-    },
-    {
-      "type": "article",
-      "title": "The Era of Artificial Intelligence Deception: Unraveling the Complexities of False Realities and Emerging Threats of Misinformation",
-      "authors": ["Williamson, S.M.", "Prybutok, V."],
-      "year": 2024,
-      "doi": "10.3390/info15060299",
-      "keywords": ["AI deception", "misinformation"],
-      "category": "AI-Enabled Deceptive Content"
-    },
-    {
-      "type": "article",
-      "title": "Digital deception: generative artificial intelligence in social engineering and phishing",
-      "authors": ["Schmitt, M.", "Flechais, I."],
-      "year": 2024,
-      "doi": "10.1007/s10462-024-10973-2",
-      "keywords": ["AI", "phishing", "social engineering"],
-      "category": "AI-Enabled Deceptive Content"
+      "keywords": [
+        "traffic analysis",
+        "AI",
+        "correlation"
+      ],
+      "category": "Detection & Mapping",
+      "abstract": "This paper explores vulnerabilities in wireless sensor networks (WSNs) due to traffic analysis attacks, focusing on how adversaries can identify base stations (BS) by correlating intercepted wireless transmissions. The authors propose Enhanced Evidence Theory (EET), an advanced attack model that leverages both spatial and temporal correlation to improve the inference of network topology and BS location. Traditional models like Evidence Theory (ET) only account for spatial dimensions, but EET integrates timing of transmissions, allowing attackers to draw more accurate conclusions. To counter this threat, the paper introduces a defense mechanism called Assisted Deception (AD), which enables sensor nodes to collaboratively inject deceptive packets in a coordinated, time-sensitive manner. This approach is designed to obscure traffic patterns and reduce the accuracy of EET without requiring the involvement of the BS, ensuring scalability and adaptability. Simulation results demonstrate that AD outperforms existing solutions in both time- and event-driven networks, effectively enhancing the anonymity of critical nodes and preserving energy efficiency."
     },
     {
       "type": "article",
       "title": "The use of artificial intelligence in counter-disinformation: a world wide (web) mapping",
-      "authors": ["Pilati, F.", "Venturini, T."],
+      "authors": [
+        "Federico Pilati",
+        "Tommaso Venturini"
+      ],
       "year": 2025,
       "doi": "10.3389/fpos.2025.1517726",
-      "keywords": ["disinformation", "mapping", "AI policy"],
-      "category": "Detection & Mapping"
+      "keywords": [
+        "disinformation",
+        "mapping",
+        "AI policy"
+      ],
+      "category": "Detection & Mapping",
+      "abstract": "This paper investigates the global landscape of initiatives that use artificial intelligence (AI) to counter disinformation. By mapping hyperlinks among websites and analyzing their structure and descriptions, the authors examine how different organizations approach the challenge. The research highlights both top-down and bottom-up efforts, ranging from governmental programs to civil society projects. Although AI has been promoted as a solution for detecting and flagging false information, the study points out that its implementation can be inconsistent and occasionally counterproductive, raising concerns about algorithmic bias and censorship. Through network mapping, the paper identifies patterns in how AI is deployed and suggests areas for better coordination. The authors argue that without a unified framework, many of these efforts risk redundancy or inefficiency. The research also emphasizes the need to balance technological solutions with human oversight to avoid undermining democratic values in the fight against disinformation."
+    },
+    {
+      "type": "article",
+      "title": "Using artificial intelligence (AI) and deepfakes to deceive victims: the need to rethink current romance fraud prevention messaging",
+      "authors": [
+        "Cassandra Cross"
+      ],
+      "year": 2022,
+      "doi": "10.1057/s41300-021-00134-w",
+      "keywords": [
+        "deepfake",
+        "romance fraud",
+        "AI"
+      ],
+      "category": "Human & Social Impact",
+      "abstract": "This article examines how technological advances, particularly in artificial intelligence and deepfakes, are transforming romance fraud and challenging existing prevention strategies. Traditionally, fraud prevention messaging has encouraged the use of reverse image searches to verify online identities. However, with the increasing use of deepfake technology, offenders can now generate synthetic images and videos that are highly convincing, rendering these prevention tools less effective. The paper discusses the implications of this shift, highlighting how offenders can exploit emotional manipulation and digital anonymity to perpetrate fraud. Victims may not only suffer financial loss but also experience deep emotional trauma due to the perceived betrayal of a romantic relationship. The article calls for an urgent reevaluation of current messaging, urging authorities to adapt communication strategies in response to the evolving threat landscape. It advocates for public awareness campaigns that address the sophistication of AI-enabled scams and provide guidance beyond traditional verification techniques."
+    },
+    {
+      "type": "article",
+      "title": "Online frauds: learning from victims why they fall for these scams",
+      "authors": [
+        "Mark Button",
+        "Carol McNaughton Nicholls",
+        "Jane Kerr",
+        "Rachael Owen"
+      ],
+      "year": 2014,
+      "doi": "10.1177/0004865814521224",
+      "keywords": [
+        "fraud",
+        "victim psychology",
+        "online scams"
+      ],
+      "category": "Human & Social Impact",
+      "abstract": "This paper presents a qualitative investigation into the psychological and contextual factors that lead individuals to fall victim to online fraud. Through interviews with 15 victims, focus groups, and consultations with professionals, the study reveals a range of influencing elements, including perceived legitimacy, emotional appeal, urgency, coercion, and the anonymity afforded by digital interactions. Scams often succeeded by mimicking trusted authorities, exploiting cognitive shortcuts, or pressuring victims into quick decisions. Embarrassment and shame frequently prevented victims from reporting incidents, further complicating detection and response. The authors emphasize the need for fraud prevention policies to consider these emotional and psychological dimensions and call for educational campaigns that build digital resilience and awareness."
+    },
+    {
+      "type": "article",
+      "title": "The Psychology of Internet Fraud Victimisation: a Systematic Review",
+      "authors": [
+        "Gordon Norris",
+        "Anna Brookes",
+        "David Dowell"
+      ],
+      "year": 2019,
+      "doi": "10.1007/s11896-019-09334-5",
+      "keywords": [
+        "fraud",
+        "psychology",
+        "systematic review"
+      ],
+      "category": "Human & Social Impact",
+      "abstract": "This systematic review synthesizes existing research on the psychological factors associated with susceptibility to internet fraud. It identifies individual traits such as impulsivity, low self-control, and loneliness as significant predictors of victimization. The paper also examines the role of age, cognitive biases, and trust in shaping vulnerability to online scams. Drawing from multiple disciplines, the authors argue that fraud prevention requires more than just technological tools—it must also address psychological predispositions and social environments. The review concludes by recommending targeted interventions and awareness strategies for high-risk populations, including elderly users and socially isolated individuals."
+    },
+    {
+      "type": "article",
+      "title": "Bio-Inspired Artificial Intelligence with Natural Language Processing Based on Deceptive Content Detection in Social Networking",
+      "authors": [
+        "Amani Abdulrahman Albraikan",
+        "Mohammed Maray",
+        "Faiz Abdullah Alotaibi",
+        "Mrim M. Alnfiai",
+        "Arun Kumar",
+        "Ahmed Sayed"
+      ],
+      "year": 2023,
+      "doi": "10.3390/biomimetics8060449",
+      "keywords": [
+        "NLP",
+        "bio-inspired AI",
+        "deception"
+      ],
+      "category": "AI-Enabled Deceptive Content",
+      "abstract": "This research introduces a hybrid artificial intelligence model called BAINLP-DCD for detecting deceptive content on social networking platforms. The model integrates a BiLSTM deep learning architecture with a bio-inspired African Vulture Optimization Algorithm to enhance classification accuracy. Experimental results on benchmark datasets show that the proposed model outperforms traditional machine learning approaches in detecting fake news. The paper emphasizes the importance of combining natural language processing with optimization techniques to address the growing challenge of misinformation on social platforms. It provides detailed evaluations of model parameters, training strategies, and real-world implications, concluding that such hybrid systems can offer scalable and effective solutions to online deception."
+    },
+    {
+      "type": "article",
+      "title": "AI deception: A survey of examples, risks, and potential solutions",
+      "authors": [
+        "Peter S. Park",
+        "Simon Goldstein",
+        "Aidan O’Gara",
+        "Michael Chen",
+        "Dan Hendrycks"
+      ],
+      "year": 2024,
+      "doi": "10.1016/j.patter.2024.100988",
+      "keywords": [
+        "AI deception",
+        "misinformation",
+        "survey",
+        "risk analysis",
+        "regulation"
+      ],
+      "category": "Detection & Mapping",
+      "abstract": "This survey provides an in-depth examination of how artificial intelligence (AI) systems can learn to deceive. Drawing on interdisciplinary literature and empirical examples, the paper categorizes deception into forms such as lying, manipulation, and evasion, and explores the emergence of deceptive behavior in language models, reinforcement learning agents, and multi-agent systems. The authors discuss the potential risks associated with these developments, including fraud, misinformation, and manipulation in high-stakes applications like politics or military decision-making. The paper also addresses the difficulty of detecting and preventing deception in AI, citing examples where systems were unintentionally trained to be misleading. The authors emphasize the importance of including deception-related benchmarks in AI safety evaluations and propose several policy interventions, including transparency mandates, red-teaming, and governance frameworks. Ultimately, the survey serves as a foundational document for understanding the landscape of AI deception, urging collaboration between technical experts, ethicists, and regulators to mitigate these emerging threats before they manifest at scale."
+    },
+    {
+      "type": "article",
+      "title": "A multi-layer approach to disinformation detection in US and Italian news spreading on Twitter",
+      "authors": [
+        "Francesco Pierri",
+        "Carlo Piccardi",
+        "Stefano Ceri"
+      ],
+      "year": 2020,
+      "doi": "10.1140/epjds/s13688-020-00253-8",
+      "keywords": [
+        "Twitter",
+        "disinformation",
+        "detection"
+      ],
+      "category": "Detection & Mapping",
+      "abstract": "This paper proposes a novel method for detecting disinformation on Twitter by analyzing multi-layer diffusion networks. The authors focus on the structural properties of retweet networks associated with false and mainstream news in both the US and Italy. Instead of using content-based signals, the study leverages features such as modularity, clustering coefficient, and user interaction patterns to differentiate between the two types of news. The proposed model, based on logistic regression, achieves high accuracy in classifying disinformation and outperforms several baseline models on both datasets. In addition to classification, the study provides insights into the social dynamics of disinformation spread, showing that false news tends to form echo chambers and segregated communities more often than verified news. The authors argue that structural features can be used in real time to complement existing content-based approaches. The findings support the growing recognition of social network analysis as a critical tool for understanding and mitigating the dissemination of false information online."
+    },
+    {
+      "type": "article",
+      "title": "The Era of Artificial Intelligence Deception: Unraveling the Complexities of False Realities and Emerging Threats of Misinformation",
+      "authors": [
+        "Steven M. Williamson",
+        "Victor Prybutok"
+      ],
+      "year": 2024,
+      "doi": "10.3390/info15060299",
+      "keywords": [
+        "AI deception",
+        "misinformation"
+      ],
+      "category": "AI-Enabled Deceptive Content",
+      "abstract": "This article examines the rise of artificial intelligence as a driver of false realities and misinformation. It outlines how generative models such as large language models (LLMs) and deepfake tools can create misleading content that is increasingly difficult to distinguish from legitimate media. The authors explore ethical, technical, and societal dimensions of AI deception, emphasizing the erosion of public trust and the manipulation of democratic processes as key risks. The paper discusses a variety of potential countermeasures, including watermarking synthetic content, regulatory oversight, AI alignment strategies, and media literacy programs. Through a multidisciplinary lens, the authors advocate for proactive collaboration between developers, policymakers, and civil society to shape responsible AI development. Their work underscores the urgency of designing robust governance frameworks before AI-enabled deception becomes an unmanageable threat to information integrity."
+    },
+    {
+      "type": "article",
+      "title": "Digital deception: generative artificial intelligence in social engineering and phishing",
+      "authors": [
+        "Marc Schmitt",
+        "Ivan Flechais"
+      ],
+      "year": 2024,
+      "doi": "10.1007/s10462-024-10973-2",
+      "keywords": [
+        "AI",
+        "phishing",
+        "social engineering"
+      ],
+      "category": "AI-Enabled Deceptive Content",
+      "abstract": "This paper explores how generative artificial intelligence (GAI) amplifies the effectiveness of social engineering and phishing attacks. The authors examine real-world case studies and conduct an analysis of how tools like large language models and text-to-speech synthesis can be leveraged to generate personalized scam content at scale. They argue that AI lowers the barrier for executing convincing attacks by automating victim profiling, crafting believable narratives, and even generating deepfake audio or video. The study proposes a conceptual model for understanding AI-assisted deception and highlights gaps in current cybersecurity defenses. It also identifies the ethical implications of open-access AI tools being misused by malicious actors. The authors call for stronger risk mitigation strategies, including adversarial training, digital content provenance mechanisms, and public education campaigns. This paper provides a timely overview of how GAI introduces new vectors and accelerates the arms race between attackers and defenders in the digital landscape."
     }
   ]
 }
+
+
 

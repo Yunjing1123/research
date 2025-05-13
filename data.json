@@ -7,7 +7,7 @@
       "year": 2024,
       "doi": "10.1016/j.patter.2024.100988",
       "keywords": ["AI deception", "misinformation", "survey", "risk analysis", "regulation"],
-      "category": "Model & Technical Approaches"
+      "category": "Detection & Mapping"
     },
     {
       "type": "article",
@@ -16,7 +16,7 @@
       "year": 2020,
       "doi": "10.1140/epjds/s13688-020-00253-8",
       "keywords": ["Twitter", "disinformation", "detection"],
-      "category": "Model & Technical Approaches"
+      "category": "Detection & Mapping"
     },
     {
       "type": "article",
@@ -25,7 +25,7 @@
       "year": 2023,
       "doi": "10.3390/biomimetics8060449",
       "keywords": ["NLP", "bio-inspired AI", "deception"],
-      "category": "Model & Technical Approaches"
+      "category": "AI-Enabled Deceptive Content"
     },
     {
       "type": "article",
@@ -34,7 +34,7 @@
       "year": 2021,
       "doi": "10.1109/ACCESS.2021.3070841",
       "keywords": ["traffic analysis", "AI", "correlation"],
-      "category": "Model & Technical Approaches"
+      "category": "Detection & Mapping"
     },
     {
       "type": "article",
@@ -43,7 +43,7 @@
       "year": 2022,
       "doi": "10.1057/s41300-021-00134-w",
       "keywords": ["deepfake", "romance fraud", "AI"],
-      "category": "Social Psychology & Human Factors"
+      "category": "Human & Social Impact"
     },
     {
       "type": "article",
@@ -52,7 +52,7 @@
       "year": 2019,
       "doi": "10.1007/s11896-019-09334-5",
       "keywords": ["fraud", "psychology", "systematic review"],
-      "category": "Social Psychology & Human Factors"
+      "category": "Human & Social Impact"
     },
     {
       "type": "article",
@@ -61,7 +61,7 @@
       "year": 2014,
       "doi": "10.1177/0004865814521224",
       "keywords": ["fraud", "victim psychology", "online scams"],
-      "category": "Social Psychology & Human Factors"
+      "category": "Human & Social Impact"
     },
     {
       "type": "article",
@@ -70,7 +70,7 @@
       "year": 2024,
       "doi": "10.3390/info15060299",
       "keywords": ["AI deception", "misinformation"],
-      "category": "Policy, Systems & Governance"
+      "category": "AI-Enabled Deceptive Content"
     },
     {
       "type": "article",
@@ -79,7 +79,7 @@
       "year": 2024,
       "doi": "10.1007/s10462-024-10973-2",
       "keywords": ["AI", "phishing", "social engineering"],
-      "category": "Policy, Systems & Governance"
+      "category": "AI-Enabled Deceptive Content"
     },
     {
       "type": "article",
@@ -88,7 +88,7 @@
       "year": 2025,
       "doi": "10.3389/fpos.2025.1517726",
       "keywords": ["disinformation", "mapping", "AI policy"],
-      "category": "Policy, Systems & Governance"
+      "category": "Detection & Mapping"
     }
   ]
 }

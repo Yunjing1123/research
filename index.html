@@ -29,8 +29,17 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
       padding: 1rem;
     }
-    #abstract {
+    #abstractArea {
       margin-top: 1.5rem;
+    }
+    #abstractSearch {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #abstractResults {
       background: #fff;
       padding: 1rem;
       border-radius: 6px;
@@ -58,16 +67,19 @@
   <h1>AI Deception and Disinformation Literature</h1>
 
   <div class="layout">
-   
+    <!-- 左侧柱状图 + 摘要板块 -->
     <div id="histogram">
       <canvas id="yearChart" width="500" height="300"></canvas>
 
-      <div id="abstract">
-        <em>Click a paper to view its abstract here.</em>
+      <div id="abstractArea">
+        <input id="abstractSearch" type="text" placeholder="Search abstracts...">
+        <div id="abstractResults">
+          <em>Click a bar to view abstracts from that year.</em>
+        </div>
       </div>
     </div>
 
-    
+    <!-- 右侧筛选列表 -->
     <div id="vis">Loading...</div>
   </div>
 
@@ -99,6 +111,15 @@
               plugins: {
                 legend: { display: false }
               },
+              onClick: (evt, elements) => {
+                if (elements.length > 0) {
+                  const index = elements[0].index;
+                  const year = labels[index];
+                  if (window.SurVisClickYear) {
+                    window.SurVisClickYear(year);
+                  }
+                }
+              },
               scales: {
                 x: {
                   title: { display: true, text: 'Publication Year' }
@@ -115,6 +136,7 @@
   </script>
 </body>
 </html>
+
 
 
 

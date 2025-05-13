@@ -30,6 +30,53 @@
     const list = create('div');
     element.appendChild(list);
 
+    // 
+    function renderAbstracts(paperList) {
+      const target = document.getElementById('abstractResults');
+      const searchInput = document.getElementById('abstractSearch');
+
+      const renderList = (items) => {
+        target.innerHTML = '';
+        if (items.length === 0) {
+          target.innerHTML = '<em>No matching abstracts found.</em>';
+          return;
+        }
+        items.forEach(p => {
+          const authors = Array.isArray(p.authors) ? p.authors.join('; ') : (p.author || 'Unknown Author');
+          const div = document.createElement('div');
+          div.style.marginBottom = '1.5rem';
+          div.innerHTML = `
+            <h3>${p.title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p><strong>Year:</strong> ${p.year}</p>
+            <p><strong>Abstract:</strong><br/> ${p.abstract || 'No abstract available.'}</p>
+          `;
+          target.appendChild(div);
+        });
+      };
+
+      renderList(paperList);
+
+      // 
+      searchInput.value = '';
+      searchInput.oninput = () => {
+        const kw = searchInput.value.toLowerCase().trim();
+        const filtered = paperList.filter(p =>
+          (p.title || '').toLowerCase().includes(kw) ||
+          (p.keywords || []).some(k => k.toLowerCase().includes(kw)) ||
+          (Array.isArray(p.authors) ? p.authors.join(' ') : '').toLowerCase().includes(kw)
+        );
+        renderList(filtered);
+      };
+    }
+
+    // 
+    global.SurVisClickYear = function(year) {
+      const matched = papers.filter(p => String(p.year) === String(year));
+      renderAbstracts(matched);
+    };
+
+    // 
     function render(items) {
       list.innerHTML = '';
       if (items.length === 0) {
@@ -54,21 +101,16 @@
           create('p', {}, 'Keywords: ' + (p.keywords || []).join(', '))
         );
 
-        // 📌 点击卡片 → 更新摘要区域
+        // 
         card.addEventListener('click', () => {
-          const abstractBox = document.getElementById('abstract');
-          abstractBox.innerHTML = `
-            <h3>${p.title || 'Untitled'}</h3>
-            <p><strong>Authors:</strong> ${authors}</p>
-            <p><strong>Year:</strong> ${p.year || '—'}</p>
-            <p><strong>Abstract:</strong><br/> ${p.abstract || 'No abstract available.'}</p>
-          `;
+          renderAbstracts([p]);
         });
 
         list.appendChild(card);
       });
     }
 
+ 
     function filterPapers() {
       const kw = keywordInput.value.toLowerCase().trim();
       const cat = categorySelect.value;

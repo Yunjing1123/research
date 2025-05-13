@@ -54,6 +54,17 @@
           create('p', {}, 'Keywords: ' + (p.keywords || []).join(', '))
         );
 
+        // 📌 点击卡片 → 更新摘要区域
+        card.addEventListener('click', () => {
+          const abstractBox = document.getElementById('abstract');
+          abstractBox.innerHTML = `
+            <h3>${p.title || 'Untitled'}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p><strong>Year:</strong> ${p.year || '—'}</p>
+            <p><strong>Abstract:</strong><br/> ${p.abstract || 'No abstract available.'}</p>
+          `;
+        });
+
         list.appendChild(card);
       });
     }
@@ -76,6 +87,7 @@
 
   global.SurVis = { start };
 })(window);
+
 
 
 

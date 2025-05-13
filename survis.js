@@ -1,12 +1,9 @@
-// survis.js
-
-(function(global) {
-  // Simple DOM helper
+(function (global) {
   function create(tag, props = {}, ...children) {
     const el = document.createElement(tag);
     Object.assign(el, props);
     children.forEach(c => {
-      if (typeof c === 'string') c = document.createTextNode(c);
+      if (typeof c === "string") c = document.createTextNode(c);
       el.appendChild(c);
     });
     return el;
@@ -14,87 +11,76 @@
 
   function start(config) {
     const { data, element } = config;
-    // Clone the entries so we don't mutate original data
-    let papers = Array.isArray(data.entries) ? data.entries.slice() : [];
+    const papers = data.entries || [];
 
-    // Build controls container
-    const controls = create('div', { style: 'margin-bottom:10px' });
-    const filterInput = create('input', {
-      placeholder: 'Filter by keyword…',
-      style: 'margin-right:10px;padding:4px;'
+    const controls = create("div", { style: "margin-bottom: 20px;" });
+    const searchBox = create("input", {
+      placeholder: "Filter by keyword…",
+      style: "padding: 5px; margin-right: 10px;"
     });
-    const sortSelect = create('select', { style: 'margin-right:10px;padding:4px;' },
-      create('option', { value: '' }, 'Sort by year'),
-      create('option', { value: 'asc' }, '↑ Oldest first'),
-      create('option', { value: 'desc' }, '↓ Newest first')
-    );
-    controls.appendChild(filterInput);
-    controls.appendChild(sortSelect);
 
-    // Clear loading message and insert controls
-    element.innerHTML = '';
+    controls.appendChild(searchBox);
+    element.innerHTML = "";
     element.appendChild(controls);
 
-    // List container
-    const list = create('div');
+    // Histogram
+    const histo = create("div", { className: "histogram" });
+    element.appendChild(histo);
+
+    // List
+    const list = create("div");
     element.appendChild(list);
 
-    // Render a given list of papers
-    function render(items) {
-      list.innerHTML = '';
-      if (items.length === 0) {
-        list.appendChild(create('div', {}, 'No matching papers'));
-        return;
-      }
+    // Render histogram
+    function renderHistogram(items) {
+      const years = {};
       items.forEach(p => {
-        const card = create('div', { className: 'node' });
-        card.appendChild(create('h3', {}, p.title || 'Untitled'));
-        if (p.author) {
-          card.appendChild(create('div', {}, create('i', {}, p.author)));
-        }
-        card.appendChild(create('div', {}, 'Year: ' + (p.year || '—')));
-        card.appendChild(create('div', {}, 'Keywords: ' + ((p.keywords||[]).join(', '))));
-        list.appendChild(card);
+        const y = p.year || "Unknown";
+        years[y] = (years[y] || 0) + 1;
+      });
+
+      const sorted = Object.entries(years).sort((a, b) => +a[0] - +b[0]);
+      histo.innerHTML = "<h3>Histogram of Publication Years</h3>";
+      sorted.forEach(([year, count]) => {
+        const bar = create("div", {
+          className: "bar",
+          style: `width: ${count * 30}px`
+        }, `${year} (${count})`);
+        histo.appendChild(bar);
       });
     }
 
-    // Initial render
-    render(papers);
-
-    // Filtering logic
-    filterInput.addEventListener('input', () => {
-      const term = filterInput.value.trim().toLowerCase();
-      const filtered = term
-        ? papers.filter(p => (p.keywords||[]).some(k => k.toLowerCase().includes(term)))
-        : papers;
-      sortAndRender(filtered);
-    });
-
-    // Sorting logic
-    sortSelect.addEventListener('change', () => {
-      // Re-filter based on current filter value
-      const term = filterInput.value.trim().toLowerCase();
-      const baseList = term
-        ? papers.filter(p => (p.keywords||[]).some(k => k.toLowerCase().includes(term)))
-        : papers;
-      sortAndRender(baseList);
-    });
-
-    // Sort helper, then render
-    function sortAndRender(listToSort) {
-      const order = sortSelect.value;
-      if (order === 'asc') {
-        listToSort.sort((a,b) => (a.year||0) - (b.year||0));
-      } else if (order === 'desc') {
-        listToSort.sort((a,b) => (b.year||0) - (a.year||0));
-      }
-      render(listToSort);
+    // Render entries
+    function renderList(items) {
+      list.innerHTML = "";
+      items.forEach(p => {
+        const node = create("div", { className: "node" },
+          create("h3", {}, p.title),
+          create("div", {}, `Author: ${p.author}`),
+          create("div", {}, `Year: ${p.year}`),
+          create("div", {}, `Keywords: ${p.keywords?.join(", ")}`),
+          create("div", {}, create("a", { href: `https://doi.org/${p.doi}`, target: "_blank" }, "View DOI"))
+        );
+        list.appendChild(node);
+      });
     }
+
+    function update() {
+      const term = searchBox.value.toLowerCase();
+      const filtered = term
+        ? papers.filter(p => p.keywords?.some(k => k.toLowerCase().includes(term)))
+        : papers;
+      renderHistogram(filtered);
+      renderList(filtered);
+    }
+
+    searchBox.addEventListener("input", update);
+    update();
   }
 
-  // Expose SurVis API
   global.SurVis = { start };
 })(window);
+
 
 
 

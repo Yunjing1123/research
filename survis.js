@@ -36,14 +36,24 @@
         list.appendChild(create('div', {}, 'No matching papers'));
         return;
       }
+
       items.forEach(p => {
+        const authors = Array.isArray(p.authors)
+          ? p.authors.join('; ')
+          : (p.author || 'Unknown Author');
+
+        const titleElement = p.doi
+          ? create('a', { href: 'https://doi.org/' + p.doi, target: '_blank', style: 'text-decoration: none; color: #333;' }, p.title || 'Untitled')
+          : create('span', {}, p.title || 'Untitled');
+
         const card = create('div', { className: 'node' },
-          create('h3', {}, p.title || 'Untitled'),
-          create('p', {}, p.author || 'Unknown Author'),
+          create('h3', {}, titleElement),
+          create('p', {}, authors),
           create('p', {}, 'Year: ' + (p.year || '—')),
           create('p', {}, 'Category: ' + (p.category || '—')),
           create('p', {}, 'Keywords: ' + (p.keywords || []).join(', '))
         );
+
         list.appendChild(card);
       });
     }
@@ -66,6 +76,8 @@
 
   global.SurVis = { start };
 })(window);
+
+
 
 
 

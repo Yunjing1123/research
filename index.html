@@ -2,85 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SurVis - AI Deception Papers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SurVis - AI Deception and Misinformation</title>
   <script src="survis.js" defer></script>
   <style>
     body {
-      font-family: "Segoe UI", Roboto, sans-serif;
+      font-family: Arial, sans-serif;
+      margin: 40px auto;
+      max-width: 960px;
       background-color: #f5f7fb;
-      padding: 40px;
-      margin: 0;
       color: #333;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 24px;
-      color: #2c3e50;
       text-align: center;
-    }
-
-    #vis {
-      max-width: 800px;
-      margin: auto;
+      margin-bottom: 24px;
     }
 
     .node {
       padding: 16px;
-      margin: 12px 0;
-      border: 1px solid #d0d0ff;
+      margin-bottom: 12px;
+      background: #fff;
+      border: 1px solid #ccc;
       border-left: 6px solid #4e79a7;
-      background: #f7f9ff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+      border-radius: 6px;
     }
 
-    .node:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .histogram {
+      margin: 20px 0;
     }
 
-    input, select {
-      font-size: 16px;
-      padding: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid #bbb;
-      margin-right: 10px;
-    }
-
-    select {
-      background-color: #fff;
+    .bar {
+      background-color: #4e79a7;
+      margin: 4px 0;
+      height: 18px;
+      color: white;
+      padding-left: 6px;
     }
   </style>
 </head>
 <body>
-  <h1>AI Deception and Misinformation Research</h1>
-  <div id="vis">Loading...</div>
+  <h1>AI Deception and Misinformation Papers</h1>
+  <div id="vis">Loading…</div>
   <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      fetch('data.json')
-        .then(resp => {
-          if (!resp.ok) throw new Error('Network error');
-          return resp.json();
-        })
-        .then(json => {
-          SurVis.start({
-            data: json,
-            element: document.getElementById('vis'),
-            sortField: 'year',
-            sortDescending: true
-          });
-        })
-        .catch(err => {
-          document.getElementById('vis').textContent = 'Failed to load data.json';
-          console.error(err);
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        SurVis.start({
+          data: data,
+          element: document.getElementById("vis")
         });
-    });
+      });
   </script>
 </body>
 </html>
+
 
 
 

@@ -2,40 +2,12 @@
   "entries": [
     {
       "type": "article",
-      "title": "The Era of Artificial Intelligence Deception: Unraveling the Complexities of False Realities and Emerging Threats of Misinformation",
-      "author": "Williamson, S.M.; Prybutok, V.",
+      "title": "AI deception: A survey of examples, risks, and potential solutions",
+      "author": "Park, P.S.; Goldstein, S.; O’Gara, A.; Chen, M.; Hendrycks, D.",
       "year": 2024,
-      "doi": "10.3390/info15060299",
-      "keywords": [
-        "AI deception",
-        "misinformation"
-      ]
-    },
-    {
-      "type": "article",
-      "title": "Digital deception: generative artificial intelligence in social engineering and phishing",
-      "author": "Schmitt, M.; Flechais, I.",
-      "year": 2024,
-      "doi": "10.1007/s10462-024-10973-2",
-      "keywords": [
-        "AI",
-        "phishing",
-        "social engineering"
-      ]
-    },
-    {
-     "type": "article",
-     "title": "AI deception: A survey of examples, risks, and potential solutions",
-     "author": "Park, P.S.; Goldstein, S.; O’Gara, A.; Chen, M.; Hendrycks, D.",
-     "year": 2024,
-     "doi": "10.1016/j.patter.2024.100988",
-     "keywords": [
-       "AI deception",
-       "misinformation",
-       "survey",
-       "risk analysis",
-       "regulation"
-     ]
+      "doi": "10.1016/j.patter.2024.100988",
+      "keywords": ["AI deception", "misinformation", "survey", "risk analysis", "regulation"],
+      "category": "Model & Technical Approaches"
     },
     {
       "type": "article",
@@ -43,11 +15,8 @@
       "author": "Pierri, F.; Piccardi, C.; Ceri, S.",
       "year": 2020,
       "doi": "10.1140/epjds/s13688-020-00253-8",
-      "keywords": [
-        "Twitter",
-        "disinformation",
-        "detection"
-      ]
+      "keywords": ["Twitter", "disinformation", "detection"],
+      "category": "Model & Technical Approaches"
     },
     {
       "type": "article",
@@ -55,11 +24,8 @@
       "author": "Albraikan, A.A.; et al.",
       "year": 2023,
       "doi": "10.3390/biomimetics8060449",
-      "keywords": [
-        "NLP",
-        "bio-inspired AI",
-        "deception"
-      ]
+      "keywords": ["NLP", "bio-inspired AI", "deception"],
+      "category": "Model & Technical Approaches"
     },
     {
       "type": "article",
@@ -67,23 +33,8 @@
       "author": "Ebrahimi, Y.; Younis, M.",
       "year": 2021,
       "doi": "10.1109/ACCESS.2021.3070841",
-      "keywords": [
-        "traffic analysis",
-        "AI",
-        "correlation"
-      ]
-    },
-    {
-      "type": "article",
-      "title": "The use of artificial intelligence in counter-disinformation: a world wide (web) mapping",
-      "author": "Pilati, F.; Venturini, T.",
-      "year": 2025,
-      "doi": "10.3389/fpos.2025.1517726",
-      "keywords": [
-        "disinformation",
-        "mapping",
-        "AI policy"
-      ]
+      "keywords": ["traffic analysis", "AI", "correlation"],
+      "category": "Model & Technical Approaches"
     },
     {
       "type": "article",
@@ -91,23 +42,8 @@
       "author": "Cross, C.",
       "year": 2022,
       "doi": "10.1057/s41300-021-00134-w",
-      "keywords": [
-        "deepfake",
-        "romance fraud",
-        "AI"
-      ]
-    },
-    {
-      "type": "article",
-      "title": "Online frauds: learning from victims why they fall for these scams",
-      "author": "Button, M.; McNaughton Nicholls, C.; Kerr, J.; Owen, R.",
-      "year": 2014,
-      "doi": "10.1177/0004865814521224",
-      "keywords": [
-        "fraud",
-        "victim psychology",
-        "online scams"
-      ]
+      "keywords": ["deepfake", "romance fraud", "AI"],
+      "category": "Social Psychology & Human Factors"
     },
     {
       "type": "article",
@@ -115,11 +51,45 @@
       "author": "Norris, G.; Brookes, A.; Dowell, D.",
       "year": 2019,
       "doi": "10.1007/s11896-019-09334-5",
-      "keywords": [
-        "fraud",
-        "psychology",
-        "systematic review"
-      ]
+      "keywords": ["fraud", "psychology", "systematic review"],
+      "category": "Social Psychology & Human Factors"
+    },
+    {
+      "type": "article",
+      "title": "Online frauds: learning from victims why they fall for these scams",
+      "author": "Button, M.; McNaughton Nicholls, C.; Kerr, J.; Owen, R.",
+      "year": 2014,
+      "doi": "10.1177/0004865814521224",
+      "keywords": ["fraud", "victim psychology", "online scams"],
+      "category": "Social Psychology & Human Factors"
+    },
+    {
+      "type": "article",
+      "title": "The Era of Artificial Intelligence Deception: Unraveling the Complexities of False Realities and Emerging Threats of Misinformation",
+      "author": "Williamson, S.M.; Prybutok, V.",
+      "year": 2024,
+      "doi": "10.3390/info15060299",
+      "keywords": ["AI deception", "misinformation"],
+      "category": "Policy, Systems & Governance"
+    },
+    {
+      "type": "article",
+      "title": "Digital deception: generative artificial intelligence in social engineering and phishing",
+      "author": "Schmitt, M.; Flechais, I.",
+      "year": 2024,
+      "doi": "10.1007/s10462-024-10973-2",
+      "keywords": ["AI", "phishing", "social engineering"],
+      "category": "Policy, Systems & Governance"
+    },
+    {
+      "type": "article",
+      "title": "The use of artificial intelligence in counter-disinformation: a world wide (web) mapping",
+      "author": "Pilati, F.; Venturini, T.",
+      "year": 2025,
+      "doi": "10.3389/fpos.2025.1517726",
+      "keywords": ["disinformation", "mapping", "AI policy"],
+      "category": "Policy, Systems & Governance"
     }
   ]
 }
+

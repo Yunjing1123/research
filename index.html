@@ -3,59 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SurVis - AI Deception and Misinformation</title>
+  <title>SurVis - AI Deception Papers</title>
   <script src="survis.js" defer></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px auto;
-      max-width: 960px;
-      background-color: #f5f7fb;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
+    body { font-family: sans-serif; background: #f8f9fb; padding: 2rem; color: #333; }
+    h1 { text-align: center; }
     .node {
-      padding: 16px;
-      margin-bottom: 12px;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-left: 6px solid #4e79a7;
-      border-radius: 6px;
+      background: #fff; border-left: 5px solid #4e79a7;
+      padding: 1rem; margin: 1rem 0; border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
-
-    .histogram {
-      margin: 20px 0;
-    }
-
-    .bar {
-      background-color: #4e79a7;
-      margin: 4px 0;
-      height: 18px;
-      color: white;
-      padding-left: 6px;
-    }
+    .node:hover { background: #f0f4ff; }
+    #histogram { margin: 2rem auto; max-width: 500px; }
   </style>
 </head>
 <body>
-  <h1>AI Deception and Misinformation Papers</h1>
-  <div id="vis">Loading…</div>
+  <h1>AI Deception and Disinformation Literature</h1>
+  <div id="histogram"><canvas id="yearChart" width="500" height="300"></canvas></div>
+  <div id="vis">Loading...</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    fetch("data.json")
-      .then(res => res.json())
-      .then(data => {
-        SurVis.start({
-          data: data,
-          element: document.getElementById("vis")
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('data.json')
+        .then(res => res.json())
+        .then(json => {
+          SurVis.start({ data: json, element: document.getElementById('vis') });
+          const years = json.entries.map(e => e.year).filter(Boolean);
+          const yearCount = {};
+          years.forEach(y => yearCount[y] = (yearCount[y] || 0) + 1);
+          const labels = Object.keys(yearCount).sort();
+          const counts = labels.map(y => yearCount[y]);
+          new Chart(document.getElementById('yearChart'), {
+            type: 'bar',
+            data: { labels, datasets: [{ label: '# of Papers', data: counts }] },
+            options: { responsive: true, plugins: { legend: { display: false } } }
+          });
         });
-      });
+    });
   </script>
 </body>
 </html>
+
 
 
 

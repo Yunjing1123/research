@@ -5,44 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SurVis - AI Deception Papers</title>
   <script src="survis.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: sans-serif; background: #f8f9fb; padding: 2rem; color: #333; }
-    h1 { text-align: center; }
+    body {
+      font-family: sans-serif;
+      background: #f8f9fb;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+    }
+    .layout {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+    #histogram {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+    #vis {
+      flex: 2;
+      padding: 1rem;
+    }
     .node {
-      background: #fff; border-left: 5px solid #4e79a7;
-      padding: 1rem; margin: 1rem 0; border-radius: 6px;
+      background: #fff;
+      border-left: 5px solid #4e79a7;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
-    .node:hover { background: #f0f4ff; }
-    #histogram { margin: 2rem auto; max-width: 500px; }
+    .node:hover {
+      background: #f0f4ff;
+    }
   </style>
 </head>
 <body>
   <h1>AI Deception and Disinformation Literature</h1>
-  <div id="histogram"><canvas id="yearChart" width="500" height="300"></canvas></div>
-  <div id="vis">Loading...</div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <div class="layout">
+    <!-- 左侧柱状图 -->
+    <div id="histogram">
+      <canvas id="yearChart" width="500" height="300"></canvas>
+    </div>
+
+    <!-- 右侧筛选器和列表 -->
+    <div id="vis">Loading...</div>
+  </div>
+
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       fetch('data.json')
         .then(res => res.json())
         .then(json => {
           SurVis.start({ data: json, element: document.getElementById('vis') });
+
           const years = json.entries.map(e => e.year).filter(Boolean);
           const yearCount = {};
           years.forEach(y => yearCount[y] = (yearCount[y] || 0) + 1);
           const labels = Object.keys(yearCount).sort();
           const counts = labels.map(y => yearCount[y]);
+
           new Chart(document.getElementById('yearChart'), {
             type: 'bar',
-            data: { labels, datasets: [{ label: '# of Papers', data: counts }] },
-            options: { responsive: true, plugins: { legend: { display: false } } }
+            data: {
+              labels,
+              datasets: [{
+                label: '# of Papers',
+                data: counts,
+                backgroundColor: '#4e79a7'
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                x: {
+                  title: { display: true, text: 'Publication Year' }
+                },
+                y: {
+                  title: { display: true, text: 'Number of Papers' },
+                  beginAtZero: true
+                }
+              }
+            }
           });
         });
     });
   </script>
 </body>
 </html>
+
 
 
 
